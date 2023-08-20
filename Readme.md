@@ -1,4 +1,4 @@
-# Relayer Contract for SimpleStorage Contract
+# Relayer Gasless Contract for SimpleStorage Contract with Truffle Test
 
 
 ### Installing dependencies:-
@@ -9,7 +9,7 @@ yarn
 ### Running commands:-
 
 ```
-//Start Ganache_cli for local blockchain
+//Start Ganache_cli for blockchain instance
 yarn global add ganache-cli
 
 //start ganache-cli
@@ -45,6 +45,7 @@ The GaslessRelayer contract enables gasless transactions by relaying transaction
 * Calculating data and message hashes.
 * Signing a message.
 * Relaying a transaction using the GaslessRelayer.
+
 ```
 // Test the GaslessRelayer with command:
 yarn test .\test\GaslessRelayer.test.js

@@ -1,8 +1,28 @@
+
 {
+  "name": "gasless-relayer-simplestorage",
+  "version": "1.0.0",
+  "description": "Gasless Relayer Contract Integration with SimpleStorage Smart Contract",
+  "main": "truffle-config.js",
+  "scripts": {
+    "test": "truffle test",
+    "compile": "truffle compile",
+    "build": "truffle build",
+    "lint": "solhint 'contracts/**/*.sol'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shubhamkunwar10/Gasless-Relayer.git"
+  },
+  "author": "Metakul",
+  "license": "",
   "dependencies": {
-    "@openzeppelin/contracts": "^3.4.0",
-    "@openzeppelin/test-helpers": "^0.5.14",
+    "@truffle/hdwallet-provider": "^2.1.13",
     "ethers": "^5.0.31",
-    "ganache-cli": "^6.12.2"
+    "truffle-assertions": "^0.9.2"
+  },
+  "devDependencies": {
+    "solhint": "^3.2.0",
+    "truffle": "^5.4.8"
   }
 }
