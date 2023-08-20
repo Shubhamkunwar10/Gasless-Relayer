@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variable file
+.env
+
+# Ignoring flattened contracts
+flattened/
+
+# Ignoring Truffle's build directory
+build/
+build/contracts
+
+# Ignoring package cache (if applicable)
+.pac
+
+# Ignoring lock files
+*.lock
+yarn.lock
+package-lock.json
+
+# Ignoring Yarn error logs
+yarn-error.log
