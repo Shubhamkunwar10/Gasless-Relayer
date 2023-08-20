@@ -2,6 +2,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^3.4.0",
     "@openzeppelin/test-helpers": "^0.5.14",
-    "ethers": "^5.0.31"
+    "ethers": "^5.0.31",
+    "ganache-cli": "^6.12.2"
   }
 }
