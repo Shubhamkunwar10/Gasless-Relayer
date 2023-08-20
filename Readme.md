@@ -1,6 +1,20 @@
 # Relayer Gasless Contract for SimpleStorage Contract with Truffle Test
 
 
+
+## Understanding the GaslessRelayer Contract
+The GaslessRelayer contract enables gasless transactions by relaying transactions on behalf of users. Here’s a brief overview of the key components:
+
+* ```addToWhitelist(address _addressForWl):``` This function allows the contract owner to add an address to the whitelist, granting it permission to use the relayer.
+* ```setGasPrice(uint256 newGasPrice):``` Allows the contract owner to set a new gas price threshold that users must meet to use the relayer.
+* ```getNonce(address user):``` Returns the nonce for a given user’s address.
+* ``` relay(...):``` The main function for relaying transactions. It verifies the signature, checks the nonce, and relays the transaction to the target contract.
+* ```getMsgHash(...):``` Calculates the message hash for a given target, data, and nonce.
+* ```getDataHash(...):``` Calculates the data hash for a given data input.
+* ```recoverSigner(...):``` Recovers the signer’s address from a given message hash and signature.
+* ```relayWithGasPrice(...):``` A helper function that relays a transaction while ensuring the gas price is above the specified threshold.
+
+
 ### Installing dependencies:-
 ```
 yarn
@@ -26,17 +40,6 @@ yarn test
 ```
 
 
-## Understanding the GaslessRelayer Contract
-The GaslessRelayer contract enables gasless transactions by relaying transactions on behalf of users. Here’s a brief overview of the key components:
-
-* ```addToWhitelist(address _addressForWl):``` This function allows the contract owner to add an address to the whitelist, granting it permission to use the relayer.
-* ```setGasPrice(uint256 newGasPrice):``` Allows the contract owner to set a new gas price threshold that users must meet to use the relayer.
-* ```getNonce(address user):``` Returns the nonce for a given user’s address.
-* ``` relay(...):``` The main function for relaying transactions. It verifies the signature, checks the nonce, and relays the transaction to the target contract.
-* ```getMsgHash(...):``` Calculates the message hash for a given target, data, and nonce.
-* ```getDataHash(...):``` Calculates the data hash for a given data input.
-* ```recoverSigner(...):``` Recovers the signer’s address from a given message hash and signature.
-* ```relayWithGasPrice(...):``` A helper function that relays a transaction while ensuring the gas price is above the specified threshold.
 
 ## Testing the GaslessRelayer Contract
 * The provided test script (test/GaslessRelayer.js) demonstrates how to interact with the GaslessRelayer contract and perform various operations, including:
