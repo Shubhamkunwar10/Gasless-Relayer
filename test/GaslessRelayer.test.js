@@ -3,6 +3,7 @@ let SimpleStorage = artifacts.require("SimpleStorage");
 const ethers = require("ethers");
 contract("GaslessRelayer", (accounts) => {
   let owner = accounts[0];
+
   let nonce = 0; //Need to find a better way to work with nonce
 
   let wallet = ethers.Wallet.createRandom();
@@ -84,7 +85,9 @@ contract("GaslessRelayer", (accounts) => {
     let signature = web3.eth.accounts.sign(
       messageHashBySigner,
       signerPrivateKey
-    );
+    )
+    console.log(signature)
+    
 
     let newData = await simpleStorage.data_a();
     console.log(
@@ -104,10 +107,9 @@ contract("GaslessRelayer", (accounts) => {
         simpleStorage.address,
         data,
         nonce,
-        signature.v,
-        signature.r,
-        signature.s,
+        signature.signature,
         signature.messageHash,
+        messageHashBySigner,
         { from: owner }
       );
       console.log(
@@ -125,13 +127,14 @@ contract("GaslessRelayer", (accounts) => {
 
     newData = await simpleStorage.data_a();
     console.log("New value of data_a:", newData.toString());
+    // console.log("New value of data_a:",await gaslessRelayer.getMessageHashFromSignature(signature.signature));
 
     // Get the final balances
     let finalSignerBalance = await web3.eth.getBalance(signer);
     let finalOwnerBalance = await web3.eth.getBalance(owner);
 
-    console.log(`Final Signer Balance: ${signer} ${finalSignerBalance}`);
-    console.log(`Final Owner Balance: ${owner} ${finalOwnerBalance}`);
+    console.log(`Final Signer Balance: ${signer} ${finalSignerBalance} gwei`);
+    console.log(`Final Owner Balance: ${owner} ${finalOwnerBalance} gwei`);
     console.log("Test completed.");
   });
 });
